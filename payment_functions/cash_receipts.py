@@ -10,6 +10,7 @@ from pprint import pprint
 from json import loads
 import http.client
 
+# 현금영수증 발급 함수
 def request_receipts() -> dict:
     conn = http.client.HTTPSConnection("api.tosspayments.com")
 
