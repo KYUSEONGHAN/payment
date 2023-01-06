@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>신용-체크카드 결제하기</title>
+    <script src="https://js.tosspayments.com/v1/payment"></script>
+</head>
+<body>
+    <script>
+        // Toss객체 초기화
+        // 테스트 키 값 -> 추가 계약 후 api 받아 올 수 있음
+        // 추가 할려면 토스페이먼츠 고객센터(1544-7772, support@tosspayments.com)으로 문의
+        var clientKey = 'test_ck_OAQ92ymxN34Z915opBPrajRKXvdk';
+        var tossPayments = TossPayments(clientKey); // 클라이언트 키로 초기화하기
+
+        //결제창 호출
+        // 추후에 디비가 연동되면 -> flask expose로 유저, 물건, 금액 등 입력받는 식으로 변경
+        // 현재는 디비에 연동되있지않아서 임시 고정값으로 대체
+        tossPayments.requestPayment('카드', { // 결제 수단 파라미터
+            // 결제 정보 파라미터
+            amount: 15000,
+            orderId: 'E0PEwBiFhpOgiMnMweHIf',
+            orderName: '토스 티셔츠 외 2건',
+            customerName: '박토스',
+            successUrl: 'http://localhost:8080/success',
+            failUrl: 'http://localhost:8080/fail',
+        })
+        .catch(function (error) {
+          if (error.code === 'USER_CANCEL') {
+            // 결제 고객이 결제창을 닫았을 때 에러 처리
+          } else if (error.code === 'INVALID_CARD_COMPANY') {
+            // 유효하지 않은 카드 코드에 대한 에러 처리
+          }
+        })
+    </script>
+</body>
+</html>
