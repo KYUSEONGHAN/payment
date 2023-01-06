@@ -9,9 +9,9 @@ GoodAttitude 플랫폼 결제 시스템 구축
 
 ### 가상환경 및 패키지 세팅
 > (터미널에서) python3 -m pip install --user -U  
-> virtualenv env
-> (가상 환경 활성화) source env/bin/activate
-> (window) .\my_env\Scripts\activate
+> virtualenv env  
+> (가상 환경 활성화) source env/bin/activate  
+> (window) .\my_env\Scripts\activate  
 
 ## Tech Stack.
 <img src="https://img.shields.io/badge/Python 3.8-3776AB?style=for-the-badge&logo=Python&logoColor=white"><img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"><img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
