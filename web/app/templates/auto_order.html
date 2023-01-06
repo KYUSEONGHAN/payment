@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>테스트 카드 등록(빌링) 페이지</title>
+    <script src="https://js.tosspayments.com/v1/payment"></script>
+    <script>
+        // Toss객체 초기화
+        // 테스트 키 값 -> 추가 계약 후 api 받아 올 수 있음
+        // 추가 할려면 토스페이먼츠 고객센터(1544-7772, support@tosspayments.com)으로 문의
+        var clientKey = 'test_ck_OAQ92ymxN34Z915opBPrajRKXvdk';
+        var tossPayments = TossPayments(clientKey);
+
+        tossPayments.requestBillingAuth('카드', { // 결제 수단 파라미터
+          // 빌링키 발급 요청을 위한 파라미터
+          customerKey: 'aCcQOUMaiwje9pIeN09Vw',
+          successUrl: 'http://localhost:8080/success2',
+          failUrl: 'http://localhost:8080/fail',
+        })
+        .catch(function (error) {
+          if (error.code === 'USER_CANCEL') {
+            // 결제 고객이 결제창을 닫았을 때 에러 처리
+          } else if (error.code === 'INVALID_CARD_COMPANY') {
+            // 유효하지 않은 카드 코드에 대한 에러 처리
+          }
+        })
+    </script>
+</head>
+</html>
