@@ -4,10 +4,11 @@ import http.client
 API 호출하기
 카드 자동 결제 빌링키 발급 요청 API를 호출합니다. authKey, customerKey 값을 요청 본문으로 보냅니다.
 """
-def get_keyvalue():
+def get_keyvalue(authKey, customerKey):
     conn = http.client.HTTPSConnection("api.tosspayments.com")
 
-    payload = "{\"authKey\":\"bln_JJeREObQa\",\"customerKey\":\"aCcQOUMaiwje9pIeN09Vw\"}"
+    # payload = "{\"authKey\":\"bln_JJeREObQa\",\"customerKey\":\"aCcQOUMaiwje9pIeN09Vw\"}"
+    payload = "{\"authKey\":\"" + authKey + '\",\"customerKey\":\"' + customerKey + '\"}"'
 
     headers = {
         'Authorization': "Basic dGVzdF9za19CRTkyTEFhNVBWYlBwTFlBNlg5ODdZbXBYeUpqOg==",
@@ -20,5 +21,3 @@ def get_keyvalue():
     data = res.read()
 
     return data.decode("utf-8")
-
-print(get_keyvalue())

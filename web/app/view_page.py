@@ -1,3 +1,5 @@
+from web.billing_api.get_billingkey import get_keyvalue
+
 from flask import Flask, render_template, request
 import requests
 import json
@@ -38,22 +40,11 @@ def success():
 # 일반 카드 결제
 @app.route('/success2')
 def success2():
-    print('hohoho')
-    customerKey = request.args.get('customerKey') or None
-    print(customerKey)
-    print('hohoho')
-
     customerKey = request.args.get('customerKey', "")
     authKey = request.args.get('authKey', "")
+    # get_billingkey value
+    billingKey = get_keyvalue(authKey, customerKey)
+    # convert string dict to dict
+    billingKey = json.loads(billingKey)['billingKey']
 
-    url = "https://api.tosspayments.com/v1/payments/" + customerKey + authKey
-    headers = {'Authorization': 'Basic dGVzdF9za19CRTkyTEFhNVBWYlBwTFlBNlg5ODdZbXBYeUpqOg==',
-               'Content-Type': 'application/json'}
-    res = requests.post(url, headers=headers)
-
-    print('## URL : ', res.request.url)
-    print('## 요청헤더 : ', res.request.headers)
-    print('## 요청보디 : ', res.request.body)
-    print('## 요청결과 : ', res.text)
-
-    return render_template('success.html', result=res.json())
+    return render_template('success2.html')
